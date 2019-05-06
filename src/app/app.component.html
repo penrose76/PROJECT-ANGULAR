@@ -1,0 +1,50 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to gggggggggggggggg {{ title }}!
+  </h1>
+</div>
+
+  Pies o imieniu {{pies.name}} i wiek: {{pies.age}}<br>
+  Data: {{data | date: 'yyyy-MM-hh'}}
+
+  <ul>
+    <li *ngFor="let dni of week">
+       {{dni}}
+    </li>
+
+    <ng-container *ngFor="let pies2 of psy">
+        Pies o imieniu {{pies2.name}} i wiek: {{pies2.age}}<br>
+     </ng-container>
+  </ul>
+
+<p>
+
+ <input [(ngModel)]="wartosc" />{{wartosc}}
+ </p>
+<p>
+ <input [(ngModel)]="klucz"/>
+ <button (click)='addKlucz()'>Dodaj wartosc</button>
+</p>
+
+<ul>
+  <li *ngFor="let key of tabelaKluczy; let i = index">
+    {{i+1}}. {{key}}
+    <button (click)="removeKlucz(key)">Usuń</button>
+    <button (click)="doneKlucz(key)">Zrealizowane</button>
+  </li>
+</ul>
+<br>///////////////////////////////////////////////////<br>
+
+<div>
+  <ng-container *ngIf="tabelaZrobione.length > 0; else etykieta">
+  <ul>
+    <li *ngFor="let i of tabelaZrobione; let ind = index">
+        {{ind+1}}. {{i}}
+    </li>
+  </ul>
+</ng-container>
+<ng-template #etykieta>
+  Brak elementów zrobionych
+</ng-template>
+</div>
